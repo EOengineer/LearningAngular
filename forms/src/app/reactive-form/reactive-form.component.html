@@ -1,0 +1,50 @@
+<div style="flex: 1">
+<h3>Reactive Form Example:</h3>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="first-name">First Name</label>
+      <input type="text" id="first-name" formControlName="firstName">
+    </p>
+  
+    <p>
+      <label for="last-name">Last Name</label>
+      <input type="text" id="last-name" formControlName="lastName">
+    </p>
+  
+    <p>
+      <label for="email">Email </label>
+      <input type="text" id="email" formControlName="email">
+    </p>
+
+    <p>
+      <label for="gender">Gender</label>
+      <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+      <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+    </p>
+  
+    <p>
+      <label for="isMarried">Married</label>
+      <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
+    </p>
+  
+    <p>
+    <label for="country">country </label>
+    <select name="country" id="country" formControlName="country">
+      <option selected="" value=""></option>
+      <option [ngValue]="c.id" *ngFor="let c of countryList">
+        {{c.name}}
+      </option>
+    </select>
+    </p>
+  
+    <p>
+      <button [disabled]="!profileForm.valid">Submit</button>
+    </p>
+
+    <pre>Value : {{profileForm.value | json }} </pre>
+    <pre>Valid : {{profileForm.valid}} </pre>
+    <pre>Touched : {{profileForm.touched  }} </pre>
+    <pre>Dirty : {{profileForm.dirty  }} </pre>  
+  </form>
+</div>
